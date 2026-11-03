@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BiznesLab — Tadbirkorlik uchun daromadli web sayt g'oyalari</title>
+<meta name="description" content="Tadbirkorlik uchun 6 ta tayyor web sayt g'oyasi: onlayn bron, QR menyu, do'kon konstruktori, ijara platformasi, ustalar bozori va CRM. Kim to'laydi, qancha daromad keltiradi va MVP qancha vaqtda tayyor bo'ladi.">
+<meta name="theme-color" content="#0b0d1f">
+<meta property="og:title" content="BiznesLab — Tadbirkorlik uchun daromadli web sayt g'oyalari">
+<meta property="og:description" content="6 ta g'oya, kim to'laydi va qanday pul topiladi. Daromad kalkulyatori va 4 haftalik reja.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b4bff'/%3E%3Cpath d='M18 42V24l14 8 14-8v18' fill='none' stroke='white' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('bizneslab-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- Icons -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 14h2M14 14h2M8 17.5h2"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3.5 9 5 4.5h14L20.5 9"/><path d="M4.5 9v10.5h15V9"/><path d="M3.5 9a2.6 2.6 0 0 0 5.2 0 2.6 2.6 0 0 0 5.2 0 2.6 2.6 0 0 0 5.2 0"/><path d="M9.5 19.5v-6h5v6"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><path d="M14 14h3v3h-3zM20 14h1M14 20h3M20 17v4"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.2"/><path d="m11 11 8.5 8.5M16 16l2-2M18.5 18.5l2-2"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L21 13l-8 8-2.5-2.5-6-6L3 11l1.5-1.5a4 4 0 0 0 5 5"/><path d="m13 8 3 3"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6M20 16v-9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.5a3.5 3.5 0 0 1 0 7M17.5 20a5.7 5.7 0 0 0-2-4.4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 3 8.2 7 10 4-1.8 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m21 3-9.5 18-2.5-7.5L2 11 21 3Z"/><path d="M9 13.5 21 3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav">
+    <a class="logo" href="#top" aria-label="BiznesLab bosh sahifa">
+      <span class="logo-mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9l8 5 8-5v14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="logo-text">Biznes<span>Lab</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Asosiy menyu">
+      <a href="#goyalar">G'oyalar</a>
+      <a href="#kalkulyator">Kalkulyator</a>
+      <a href="#yol-xaritasi">Yo'l xaritasi</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Mavzuni almashtirish" title="Kunduzgi / tungi rejim">
+        <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+        <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+      </button>
+      <a class="btn btn-primary btn-sm nav-cta" href="#aloqa">Bog'lanish</a>
+      <button class="burger" id="burger" type="button" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#goyalar">G'oyalar</a>
+  <a href="#tavsiya">Tavsiya</a>
+  <a href="#kalkulyator">Daromad kalkulyatori</a>
+  <a href="#yol-xaritasi">Yo'l xaritasi</a>
+  <a href="#faq">Savollar</a>
+  <a class="btn btn-primary" href="#aloqa">Bepul reja olish</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+    </div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow-badge reveal"><span class="pulse"></span> Tadbirkorlik · 2026 · 6 ta tekshirilgan g'oya</span>
+        <h1 class="reveal" style="--d:.05s">Tadbirkorlik uchun <em>daromadli web sayt</em> g'oyalari</h1>
+        <p class="hero-lead reveal" style="--d:.1s">
+          Kim to'laydi, qancha to'laydi va qaysi biri eng tez pul keltiradi — hammasi bir joyda.
+          Har bir g'oya uchun MVP muddati, daromad hisobi va birinchi mijozni topish yo'li.
+        </p>
+        <div class="hero-actions reveal" style="--d:.15s">
+          <a class="btn btn-primary" href="#goyalar">
+            G'oyalarni ko'rish
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn-ghost" href="#kalkulyator">
+            Daromadni hisoblash
+            <svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg>
+          </a>
+        </div>
+        <dl class="hero-stats reveal" style="--d:.2s">
+          <div><dt data-count="6">6</dt><dd>tayyor g'oya</dd></div>
+          <div><dt><span data-count="3">3</span>–4 <small>hafta</small></dt><dd>MVP muddati</dd></div>
+          <div><dt data-count="300" data-suffix=" ming">300 ming</dt><dd>maks. oylik obuna</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal" style="--d:.15s" aria-hidden="true">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+
+        <div class="float-card card-booking">
+          <div class="fc-head"><span class="live-dot"></span> Onlayn bron</div>
+          <div class="fc-title">Bugun, 14:30</div>
+          <div class="slots"><span>13:00</span><span class="on">14:30</span><span>16:00</span><span class="off">17:30</span></div>
+          <div class="fc-row"><span>Barbershop «Navruz»</span><span class="chip-ok">Tasdiqlandi</span></div>
+        </div>
+
+        <div class="float-card card-qr">
+          <div class="qr-box">
+            <span class="q"></span><span class="q"></span><span class="q"></span><span></span><span class="q"></span>
+            <span class="q"></span><span></span><span class="q"></span><span></span><span class="q"></span>
+            <span class="q"></span><span class="q"></span><span></span><span class="q"></span><span></span>
+            <span></span><span class="q"></span><span class="q"></span><span></span><span class="q"></span>
+            <span class="q"></span><span></span><span class="q"></span><span class="q"></span><span class="q"></span>
+          </div>
+          <div class="fc-small strong">QR menyu</div>
+          <div class="fc-small">Stol №4 · 30 soniya</div>
+        </div>
+
+        <div class="float-card card-money">
+          <div class="fc-small">Bu oy daromad</div>
+          <div class="fc-money">4 200 000 <small>so'm</small></div>
+          <svg class="spark" viewBox="0 0 220 56" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#00e0b8" stop-opacity=".45"/>
+                <stop offset="1" stop-color="#00e0b8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 46 22 40 44 42 66 32 88 35 110 24 132 27 154 16 176 19 198 8 220 11V56H0Z" fill="url(#sparkFill)"/>
+            <path d="M0 46 22 40 44 42 66 32 88 35 110 24 132 27 154 16 176 19 198 8 220 11" fill="none" stroke="#00e0b8" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="198" cy="8" r="4" fill="#00e0b8" stroke="#0d1029" stroke-width="2"/>
+          </svg>
+          <div class="fc-small up">↑ 18% o'tgan oyga nisbatan</div>
+        </div>
+
+        <div class="float-badge"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> 3 ta yangi buyurtma</div>
+      </div>
+    </div>
+
+    <div class="container hero-foot reveal" style="--d:.25s">
+      <span>Tayyor model:</span>
+      <strong>Mahalliy biznes</strong>
+      <span class="dot-sep"></span>
+      <strong>Oylik obuna</strong>
+      <span class="dot-sep"></span>
+      <strong>Komissiya</strong>
+      <span class="dot-sep"></span>
+      <strong>0 dan boshlash</strong>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-label="Xizmat ko'rsatadigan sohalar">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>Barbershop</span><span>Go'zallik saloni</span><span>Klinika</span><span>Avtoservis</span><span>Restoran</span><span>Kafe</span><span>Onlayn do'kon</span><span>Ustaxona</span><span>O'quv markazi</span><span>Ijara</span><span>Frilanserlar</span><span>Do'konlar</span>
+      </div>
+      <div class="ticker-group" aria-hidden="true">
+        <span>Barbershop</span><span>Go'zallik saloni</span><span>Klinika</span><span>Avtoservis</span><span>Restoran</span><span>Kafe</span><span>Onlayn do'kon</span><span>Ustaxona</span><span>O'quv markazi</span><span>Ijara</span><span>Frilanserlar</span><span>Do'konlar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDEAS -->
+  <section class="section" id="goyalar">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">G'oyalar katalogi</span>
+        <h2>6 ta g'oya — har biri <em>aniq daromad</em> modeli bilan</h2>
+        <p>Har bir kartochkada: kim to'laydi, qancha to'laydi va MVP qancha vaqtda tayyor bo'ladi. Batafsil tugmasi orqali to'liq rejani ko'ring.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="G'oyalarni filtrlash">
+        <button class="filter active" type="button" data-filter="all">Hammasi <span>6</span></button>
+        <button class="filter" type="button" data-filter="fast">Tez boshlash</button>
+        <button class="filter" type="button" data-filter="sub">Abonent</button>
+        <button class="filter" type="button" data-filter="market">Marketplace</button>
+        <button class="filter" type="button" data-filter="featured">Tavsiya etilgan</button>
+      </div>
+
+      <div class="ideas-grid" id="ideasGrid">
+
+        <article class="idea-card reveal" data-tags="fast sub featured">
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-cal"></use></svg></span>
+            <span class="idea-num">01</span>
+          </div>
+          <h3>Onlayn bron tizimi</h3>
+          <p class="idea-sub">Barbershop · salon · klinika · avtoservis</p>
+          <p class="idea-desc">Mijoz qulay vaqtni o'zi tanlab yoziladi. Egasi jadvalni bir ekranda ko'radi, mijozga avtomatik eslatma boradi.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Biznes egasi</dd></div>
+            <div><dt>Narx</dt><dd>100–200 ming /oy</dd></div>
+            <div><dt>MVP</dt><dd>3–4 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Tez pul</span><span>Abonent</span><span>Kam xarajat</span></div>
+          <button class="idea-link" type="button" data-idea="bron">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+        <article class="idea-card reveal" data-tags="sub">
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-store"></use></svg></span>
+            <span class="idea-num">02</span>
+          </div>
+          <h3>Do'kon konstruktori</h3>
+          <p class="idea-sub">Instagram va Telegram sotuvchilari</p>
+          <p class="idea-desc">Sotuvchi 5 daqiqada shaxsiy do'konini oladi: mahsulotlar, savat, buyurtma. Havolani Instagram bio'siga qo'yadi.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Sotuvchi</dd></div>
+            <div><dt>Narx</dt><dd>50–100 ming /oy</dd></div>
+            <div><dt>MVP</dt><dd>4–5 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Ko'p mijoz</span><span>Abonent + komissiya</span></div>
+          <button class="idea-link" type="button" data-idea="shop">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+        <article class="idea-card idea-card--featured reveal" data-tags="fast sub featured">
+          <span class="featured-badge"><svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg> Tavsiya</span>
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-qr"></use></svg></span>
+            <span class="idea-num">03</span>
+          </div>
+          <h3>QR menyu + buyurtma</h3>
+          <p class="idea-sub">Restoran va kafelar</p>
+          <p class="idea-desc">Stolga QR kod. Mijoz telefonda menyuni ko'radi va buyurtma beradi — oshxonaga darhol xabar boradi.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Restoran egasi</dd></div>
+            <div><dt>Narx</dt><dd>100–300 ming /oy</dd></div>
+            <div><dt>MVP</dt><dd>2–3 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Eng tez MVP</span><span>Oson sotiladi</span></div>
+          <button class="idea-link" type="button" data-idea="qr">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+        <article class="idea-card reveal" data-tags="market">
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-key"></use></svg></span>
+            <span class="idea-num">04</span>
+          </div>
+          <h3>Ijara platformasi</h3>
+          <p class="idea-sub">Mashina · kvartira · texnika</p>
+          <p class="idea-desc">Egalar e'lon qo'yadi, mijoz sanani tanlab bron qiladi. Band kunlar avtomatik yopiladi, to'lov platformada.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Har bir brondan</dd></div>
+            <div><dt>Narx</dt><dd>10–15% komissiya</dd></div>
+            <div><dt>MVP</dt><dd>6–8 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Marketplace</span><span>Yuqori daromad</span></div>
+          <button class="idea-link" type="button" data-idea="ijara">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+        <article class="idea-card reveal" data-tags="market">
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-tool"></use></svg></span>
+            <span class="idea-num">05</span>
+          </div>
+          <h3>Ustalar bozori</h3>
+          <p class="idea-sub">Frilanserlar va ustalar</p>
+          <p class="idea-desc">Mijoz vazifani yozadi, ustalar narx va muddat bilan taklif yuboradi. Tanlov reyting va sharhlar asosida.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Usta / mijoz</dd></div>
+            <div><dt>Narx</dt><dd>8–12% komissiya</dd></div>
+            <div><dt>MVP</dt><dd>5–6 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Marketplace</span><span>Komissiya</span></div>
+          <button class="idea-link" type="button" data-idea="usta">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+        <article class="idea-card reveal" data-tags="sub">
+          <div class="idea-top">
+            <span class="idea-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></span>
+            <span class="idea-num">06</span>
+          </div>
+          <h3>Kichik biznes CRM</h3>
+          <p class="idea-sub">Do'kon · ustaxona · o'quv markazi</p>
+          <p class="idea-desc">Mijozlar bazasi, qarzlar, to'lovlar va hisobotlar. Daftar o'rniga bitta tushunarli ekran.</p>
+          <dl class="idea-meta">
+            <div><dt>Kim to'laydi</dt><dd>Biznes egasi</dd></div>
+            <div><dt>Narx</dt><dd>100–250 ming /oy</dd></div>
+            <div><dt>MVP</dt><dd>4–6 hafta</dd></div>
+          </dl>
+          <div class="tags"><span>Abonent</span><span>Barqaror daromad</span></div>
+          <button class="idea-link" type="button" data-idea="crm">Batafsil <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </article>
+
+      </div>
+      <p class="filter-empty" id="filterEmpty" hidden>Bu filtr bo'yicha g'oya topilmadi.</p>
+    </div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section class="section section-tight" id="tavsiya">
+    <div class="container">
+      <div class="rec-panel reveal">
+        <div class="rec-glow" aria-hidden="true"></div>
+        <div class="rec-head">
+          <span class="eyebrow eyebrow-light">Mening tavsiyam</span>
+          <h2>Boshlash uchun eng <em>tez pul keltiradigan</em> ikkitasi</h2>
+          <p>MVP 3–4 haftada tayyor bo'ladi, mahalliy biznesga bevosita borib ko'rsatish mumkin, birinchi mijozni o'zingiz yashaydigan joydan topasiz.</p>
+        </div>
+
+        <div class="rec-grid">
+          <article class="rec-card">
+            <div class="rec-top">
+              <span class="rec-rank">1-o'rin</span>
+              <span class="rec-time"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg> 2–3 hafta</span>
+            </div>
+            <h3>QR menyu + buyurtma</h3>
+            <p class="rec-text">Restoran va kafelar uchun. Eng qisqa MVP, eng oson demo: QR kodni stolga qo'ying — 30 soniyada buyurtma.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Demo bir uchrashuvda ko'rsatiladi</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Egasi natijani bir kunda ko'radi</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Raqobat hali past</li>
+            </ul>
+            <div class="rec-price">100–300 ming so'm <span>/oy</span></div>
+          </article>
+
+          <article class="rec-card">
+            <div class="rec-top">
+              <span class="rec-rank alt">2-o'rin</span>
+              <span class="rec-time"><svg class="icon" aria-hidden="true"><use href="#i-cal"></use></svg> 3–4 hafta</span>
+            </div>
+            <h3>Onlayn bron tizimi</h3>
+            <p class="rec-text">Har mahallada barbershop va salon bor. Egasi yo'qotilgan mijozni darhol his qiladi — sotish oson.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Barqaror oylik to'lov</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Mijoz bazasi juda yaqin</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Keyin CRM'ga oson kengaytiriladi</li>
+            </ul>
+            <div class="rec-price">100–200 ming so'm <span>/oy</span></div>
+          </article>
+        </div>
+
+        <div class="rec-note">
+          <svg class="icon" aria-hidden="true"><use href="#i-spark"></use></svg>
+          Ikkalasini bitta kod bazasida qilsa ham bo'ladi: bron va buyurtma — bir xil jadval mantig'i. Birinchi oyda bittasini tanlab, ikkinchisini keyin qo'shing.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section" id="kalkulyator">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Daromad kalkulyatori</span>
+        <h2>O'z raqamingizni <em>hoziroq</em> hisoblang</h2>
+        <p>G'oyani tanlang, mijozlar sonini va o'rtacha to'lovni suring. Bu taxminiy hisob — real natija sotuvga bog'liq.</p>
+      </div>
+
+      <div class="calc reveal">
+        <div class="calc-controls">
+          <div class="field">
+            <span class="field-label">G'oyani tanlang</span>
+            <div class="calc-ideas" id="calcIdeas" role="group" aria-label="G'oya tanlash">
+              <button type="button" class="calc-idea active" data-key="qr">QR menyu</button>
+              <button type="button" class="calc-idea" data-key="bron">Onlayn bron</button>
+              <button type="button" class="calc-idea" data-key="shop">Do'kon</button>
+              <button type="button" class="calc-idea" data-key="ijara">Ijara</button>
+              <button type="button" class="calc-idea" data-key="usta">Ustalar</button>
+              <button type="button" class="calc-idea" data-key="crm">CRM</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-row">
+              <label class="field-label" for="calcCount">Mijozlar / oy</label>
+              <output class="field-value" id="calcCountLabel" for="calcCount">20</output>
+            </div>
+            <input type="range" id="calcCount" min="5" max="200" step="5" value="20">
+            <div class="range-ends"><span>5</span><span>200</span></div>
+          </div>
+
+          <div class="field">
+            <div class="field-row">
+              <label class="field-label" for="calcPrice">O'rtacha to'lov</label>
+              <output class="field-value" id="calcPriceLabel" for="calcPrice">200 000 so'm</output>
+            </div>
+            <input type="range" id="calcPrice" min="100000" max="300000" step="25000" value="200000">
+            <div class="range-ends"><span>100 ming</span><span>300 ming</span></div>
+          </div>
+
+          <p class="calc-note" id="calcNote">Abonent modeli — har bir restoran oyiga to'laydi.</p>
+        </div>
+
+        <div class="calc-result">
+          <span class="calc-eyebrow">Taxminiy oylik daromad</span>
+          <div class="calc-value"><span id="calcMonthly">4 000 000</span> <small>so'm</small></div>
+          <div class="calc-split">
+            <div><span>Yillik</span><b id="calcYearly">48 000 000 so'm</b></div>
+            <div><span>1 mijozdan</span><b id="calcUnit">200 000 so'm</b></div>
+          </div>
+          <div class="calc-meter" aria-hidden="true"><span id="calcMeter"></span></div>
+          <p class="calc-hint">10 ta mijoz = <b id="calcTen">2 000 000 so'm</b> / oy. Birinchi oyda 5–10 mijoz real maqsad.</p>
+        </div>
+      </div>
+
+      <div class="compare reveal">
+        <div class="compare-head">
+          <h3>6 ta g'oya taqqoslamasi</h3>
+          <span>standart hajmda, oyiga</span>
+        </div>
+        <div class="compare-bars" id="compareBars"></div>
+        <p class="compare-note">Raqamlar taxminiy: har bir model uchun o'rtacha mijoz soni va o'rtacha to'lov olindi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE -->
+  <section class="section section-tight" id="taqqoslash">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Bir jadvalda</span>
+        <h2>Taqqoslash: <em>nima qiyin</em>, nima tez</h2>
+        <p>Murakkablik — texnik emas, biznes va sotuv nuqtai nazaridan. 1 — eng oson.</p>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>G'oya</th>
+              <th>Kim to'laydi</th>
+              <th>Narx</th>
+              <th>MVP</th>
+              <th>Murakkablik</th>
+              <th>Daromad turi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-cal"></use></svg></span> Onlayn bron</td>
+              <td>Biznes egasi</td>
+              <td>100–200 ming /oy</td>
+              <td>3–4 hafta</td>
+              <td><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+              <td><span class="pill">Abonent</span></td>
+            </tr>
+            <tr>
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-store"></use></svg></span> Do'kon konstruktori</td>
+              <td>Sotuvchi</td>
+              <td>50–100 ming /oy</td>
+              <td>4–5 hafta</td>
+              <td><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+              <td><span class="pill">Abonent + %</span></td>
+            </tr>
+            <tr class="is-best">
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-qr"></use></svg></span> QR menyu <b class="best-tag">Tavsiya</b></td>
+              <td>Restoran egasi</td>
+              <td>100–300 ming /oy</td>
+              <td>2–3 hafta</td>
+              <td><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></span></td>
+              <td><span class="pill">Abonent</span></td>
+            </tr>
+            <tr>
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-key"></use></svg></span> Ijara platformasi</td>
+              <td>Har bir brondan</td>
+              <td>10–15%</td>
+              <td>6–8 hafta</td>
+              <td><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td><span class="pill">Komissiya</span></td>
+            </tr>
+            <tr>
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-tool"></use></svg></span> Ustalar bozori</td>
+              <td>Usta / mijoz</td>
+              <td>8–12%</td>
+              <td>5–6 hafta</td>
+              <td><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+              <td><span class="pill">Komissiya</span></td>
+            </tr>
+            <tr>
+              <td><span class="t-ico"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></span> Kichik biznes CRM</td>
+              <td>Biznes egasi</td>
+              <td>100–250 ming /oy</td>
+              <td>4–6 hafta</td>
+              <td><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+              <td><span class="pill">Abonent</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="section" id="yol-xaritasi">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">4 haftalik reja</span>
+        <h2>G'oyadan <em>birinchi to'lovga</em> qadar</h2>
+        <p>Bu reja QR menyu yoki onlayn bron uchun. Har hafta oxirida aniq natija bo'lishi kerak.</p>
+      </div>
+
+      <ol class="roadmap">
+        <li class="road-step reveal">
+          <span class="road-num">01</span>
+          <div class="road-body">
+            <span class="road-week">1-hafta</span>
+            <h3>Tekshirish</h3>
+            <p>10 ta biznes egasi bilan suhbat. Muammoni o'z og'zidan eshiting, narxni tasdiqlang.</p>
+            <ul class="road-list">
+              <li>10 ta restoran / salon ro'yxati</li>
+              <li>3 ta og'zaki rozilik</li>
+              <li>Narx va paketlar</li>
+            </ul>
+          </div>
+        </li>
+        <li class="road-step reveal">
+          <span class="road-num">02</span>
+          <div class="road-body">
+            <span class="road-week">2-hafta</span>
+            <h3>MVP</h3>
+            <p>Bitta asosiy oqim: menyu → buyurtma yoki xizmat → bron. Ortiqcha narsa yo'q.</p>
+            <ul class="road-list">
+              <li>Admin panel</li>
+              <li>QR kod / shaxsiy havola</li>
+              <li>Telegram xabarnoma</li>
+            </ul>
+          </div>
+        </li>
+        <li class="road-step reveal">
+          <span class="road-num">03</span>
+          <div class="road-body">
+            <span class="road-week">3-hafta</span>
+            <h3>Birinchi mijoz</h3>
+            <p>Demo tayyor. 20 ta biznesga tashrif, 3 tasiga 14 kunlik bepul sinov.</p>
+            <ul class="road-list">
+              <li>Telefonda 5 daqiqalik demo</li>
+              <li>QR stendlar chop etish</li>
+              <li>Bepul sinov shartlari</li>
+            </ul>
+          </div>
+        </li>
+        <li class="road-step reveal">
+          <span class="road-num">04</span>
+          <div class="road-body">
+            <span class="road-week">4-hafta</span>
+            <h3>Pul va takrorlash</h3>
+            <p>Birinchi to'lovni oling, fikrlarni yig'ing, tavsiya orqali keyingi 2 mijozni toping.</p>
+            <ul class="road-list">
+              <li>Birinchi oylik to'lov</li>
+              <li>1 sahifalik natija hisoboti</li>
+              <li>Referral: 1 oy bepul</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FIRST CLIENT -->
+  <section class="section section-tight" id="birinchi-mijoz">
+    <div class="container">
+      <div class="split">
+        <div class="split-copy">
+          <span class="eyebrow">Sotuv</span>
+          <h2>Birinchi mijozni <em>qayerdan</em> topasiz?</h2>
+          <p>Eng samarali kanal — jismoniy tashrif. Instagram reklama keyinroq, birinchi 3 mijoz uchun emas.</p>
+          <a class="btn btn-primary" href="#aloqa">Rejani olish <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </div>
+        <div class="mini-grid">
+          <article class="mini-card">
+            <span class="mini-num">01</span>
+            <h3>Mahallangizdan boshlang</h3>
+            <p>10 ta restoran yoki salon ro'yxatini tuzing. Har biriga borib, egasi bilan 5 daqiqa gaplashing.</p>
+          </article>
+          <article class="mini-card">
+            <span class="mini-num">02</span>
+            <h3>Telefonda demo</h3>
+            <p>QR kodni stolga qo'ying va 30 soniyada buyurtma bering. Egasi o'z ko'zi bilan ko'rsin.</p>
+          </article>
+          <article class="mini-card">
+            <span class="mini-num">03</span>
+            <h3>14 kun bepul</h3>
+            <p>To'lov qo'rquvini olib tashlang. Sinov oxirida natijani raqam bilan ko'rsating.</p>
+          </article>
+          <article class="mini-card">
+            <span class="mini-num">04</span>
+            <h3>Natijani soting</h3>
+            <p>«Bu oy 320 ta buyurtma» — eng kuchli argument. Keyingi mijoz shu raqam bilan keladi.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container faq-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Savol-javob</span>
+        <h2>Ko'p beriladigan <em>savollar</em></h2>
+        <div class="faq-side">
+          <p>Savolingizga javob topmadingizmi? Yozing — 24 soat ichida javob beraman.</p>
+          <a href="#aloqa">Savol yuborish <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </div>
+      </div>
+
+      <div class="faq" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Dasturlashni bilmasam ham qila olamanmi?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Ha, birinchi versiyani no-code yoki AI yordamida yig'ish mumkin. Lekin raqobat kuchli bo'lgani uchun kamida bitta framework (masalan, Next.js) va ma'lumotlar bazasini o'rganish tavsiya etiladi. Eng muhimi — kod emas, mijoz bilan gaplashish ko'nikmasi.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Boshlash uchun qancha pul kerak?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Taxminan 0–500 ming so'm: domen, hosting va Telegram bot uchun. Asosiy xarajat — vaqt. Birinchi mijozdan oldindan to'lov (50%) olsangiz, xarajat deyarli nolga tushadi.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Narxni qanday belgilayman?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Mijozning tejamkorligidan kelib chiqing. Bitta ofitsiant oyiga 2–3 mln so'm turadi; QR menyu uning ishini yengillashtiradi. Shuning uchun 150–300 ming so'm mijoz uchun arzon ko'rinadi. Narxni emas, foydani soting.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Nega mijoz daftar yoki Excel bilan ishlamaydi?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Daftarda eslatma yo'q, qarzdorni topish qiyin, hisobot esa umuman yo'q. Kichik biznes egasi pulni ko'zdan yo'qotadi. Sizning vazifangiz — «qulaylik» emas, «yo'qotilgan pulni qaytarish» ni ko'rsatish.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Birinchi mijozni qayerdan topaman?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Mahalliy biznes: o'zingiz yashaydigan tuman, bozor atrofidagi kafe va salonlar, tanishlar orqali tavsiya, mahalliy Telegram guruhlari. Eng samaralisi — jismoniy tashrif va joyida 2 daqiqalik demo.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Sayt tayyor bo'lsa, keyin nima qilaman?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Texnik xizmat paketi qo'shing: yangilanish, qo'llab-quvvatlash, kontent kiritish. Bu oylik daromadni 20–30% ga oshiradi va mijozni uzoq muddat ushlab turadi. Keyin shu modelni ikkinchi shaharga ko'chirasiz.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Qaysi biri bilan boshlash kerak?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Agar tez pul kerak bo'lsa — QR menyu. Agar barqaror va uzoq muddatli mahsulot qurmoqchi bo'lsangiz — onlayn bron, keyin uni CRM'ga kengaytiring. Ikkalasi ham bitta jadval mantig'iga tayanadi.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / FORM -->
+  <section class="section" id="aloqa">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-copy">
+          <span class="eyebrow eyebrow-light">Keyingi qadam</span>
+          <h2>Qaysi g'oya <em>sizga yoqdi?</em></h2>
+          <p>Tanlang — men sizga shu g'oya uchun MVP rejasi, texnologiyalar ro'yxati va birinchi mijozni topish bo'yicha bosqichma-bosqich yo'l xaritasini tayyorlab beraman.</p>
+          <ul class="check-list check-list--light">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> 1 sahifalik MVP reja</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Texnologiyalar va taxminiy xarajat</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Birinchi 10 mijoz ro'yxati uchun shablon</li>
+          </ul>
+          <div class="cta-contacts">
+            <a href="tel:+998900000000"><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg> +998 90 000 00 00</a>
+            <a href="https://t.me/bizneslab_uz" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg> @bizneslab_uz</a>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <form id="leadForm" novalidate>
+            <div class="form-row">
+              <label class="form-field">
+                <span>Ismingiz</span>
+                <input type="text" name="name" id="name" placeholder="Aziz" autocomplete="name" required>
+              </label>
+              <label class="form-field">
+                <span>Telefon / Telegram</span>
+                <input type="text" name="phone" id="phone" placeholder="+998 90 123 45 67" autocomplete="tel" required>
+              </label>
+            </div>
+            <label class="form-field">
+              <span>Qaysi g'oya yoqdi?</span>
+              <select name="idea" id="ideaSelect">
+                <option value="">Hali tanlamadim</option>
+                <option value="qr">QR menyu + buyurtma</option>
+                <option value="bron">Onlayn bron tizimi</option>
+                <option value="shop">Do'kon konstruktori</option>
+                <option value="ijara">Ijara platformasi</option>
+                <option value="usta">Ustalar bozori</option>
+                <option value="crm">Kichik biznes CRM</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Qo'shimcha izoh <em>(ixtiyoriy)</em></span>
+              <textarea name="message" id="message" rows="3" placeholder="Masalan: Toshkentda 3 ta kafe bilan gaplashdim..."></textarea>
+            </label>
+            <button class="btn btn-primary btn-block" type="submit">
+              Rejani olish
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </button>
+            <p class="form-note">Ma'lumotlaringiz faqat javob berish uchun ishlatiladi. Spam yo'q.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess" hidden>
+            <span class="success-ico"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <h3>Rahmat, <span id="successName">do'stim</span>!</h3>
+            <p>So'rovingiz qabul qilindi. 24 soat ichida Telegram yoki telefon orqali bog'lanaman va rejani yuboraman.</p>
+            <button class="btn btn-soft" type="button" id="resetForm">Yana yuborish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#top">
+        <span class="logo-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9l8 5 8-5v14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="logo-text">Biznes<span>Lab</span></span>
+      </a>
+      <p>Tadbirkorlar uchun raqamli g'oyalar va tayyor web mahsulot modellari. Har bir loyiha — real mijoz muammosidan boshlanadi.</p>
+    </div>
+    <div class="footer-col">
+      <h4>G'oyalar</h4>
+      <a href="#goyalar">Onlayn bron</a>
+      <a href="#goyalar">QR menyu</a>
+      <a href="#goyalar">Do'kon konstruktori</a>
+      <a href="#goyalar">CRM</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resurslar</h4>
+      <a href="#kalkulyator">Daromad kalkulyatori</a>
+      <a href="#yol-xaritasi">4 haftalik reja</a>
+      <a href="#taqqoslash">Taqqoslash jadvali</a>
+      <a href="#faq">Savol-javob</a>
+    </div>
+    <div class="footer-col">
+      <h4>Aloqa</h4>
+      <a href="tel:+998900000000">+998 90 000 00 00</a>
+      <a href="https://t.me/bizneslab_uz" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:hello@bizneslab.uz">hello@bizneslab.uz</a>
+      <span class="footer-note">Dush–Shan, 9:00–19:00</span>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> BiznesLab. Namuna loyiha.</span>
+    <span>Raqamlar taxminiy — bozor va hududga qarab farq qiladi.</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<dialog id="ideaModal" tabindex="-1" aria-labelledby="modalTitle">
+  <button class="modal-close" id="modalClose" type="button" aria-label="Yopish">
+    <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+  </button>
+  <div class="modal-body" id="modalBody"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
