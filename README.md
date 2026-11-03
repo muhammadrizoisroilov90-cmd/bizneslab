@@ -1,5 +1,8 @@
 # BiznesLab — tadbirkorlik uchun web sayt g'oyalari
 
+**Live demo:** https://muhammadrizoisroilov90-cmd.github.io/bizneslab/
+**Repository:** https://github.com/muhammadrizoisroilov90-cmd/bizneslab
+
 Tadbirkorlik yo'nalishidagi 6 ta tayyor web mahsulot g'oyasini ko'rsatadigan, har biri uchun daromad modeli, MVP muddati va birinchi mijoz rejasini beradigan bir sahifali sayt.
 
 ## Nimalar bor
