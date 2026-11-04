@@ -96,6 +96,8 @@ Sayt: http://localhost:5173
 
 Frontend tayyor. Backend quyidagi bitta endpointni ta'minlashi kifoya.
 
+To'liq shartnoma, CORS sozlamalari, xato kodlari va backend checklist: [`docs/api-contract.md`](docs/api-contract.md).
+
 ### `POST /leads`
 
 ```http
