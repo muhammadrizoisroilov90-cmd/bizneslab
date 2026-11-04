@@ -45,8 +45,7 @@ export function Hero() {
           <Reveal delay={60}>
             <h1 className="hero__title">
               Tadbirkorlik uchun
-              <br />
-              <em>daromadli web</em> mahsulotlar
+              <br /> <em>daromadli web</em> mahsulotlar
             </h1>
           </Reveal>
 
