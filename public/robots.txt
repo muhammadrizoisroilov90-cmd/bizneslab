@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muhammadrizoisroilov90-cmd.github.io/bizneslab/sitemap.xml

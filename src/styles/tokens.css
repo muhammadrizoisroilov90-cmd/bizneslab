@@ -1,0 +1,85 @@
+:root {
+  --font-display: 'Sora Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope Variable', 'Segoe UI', system-ui, sans-serif;
+
+  --container: 1240px;
+  --header-height: 76px;
+  --section-y: clamp(4.5rem, 8.5vw, 8rem);
+  --gutter: clamp(1.125rem, 3vw, 1.5rem);
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --bg: #06070d;
+  --bg-soft: #090b14;
+  --surface: #0d101b;
+  --surface-2: #111527;
+  --surface-3: #171d32;
+  --text: #f3f4fb;
+  --text-soft: #c7cbd9;
+  --muted: #969cb0;
+  --faint: #686e82;
+  --border: rgba(255, 255, 255, 0.085);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --brand: #7a6cff;
+  --brand-2: #a495ff;
+  --brand-3: #5b8cff;
+  --mint: #46e3ae;
+  --amber: #f3c46d;
+  --pink: #ff86b9;
+  --sky: #6cc8ff;
+  --danger: #ff7c88;
+  --gradient: linear-gradient(115deg, #9182ff 0%, #6f8cff 48%, #48e2b4 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(122, 108, 255, 0.18), rgba(70, 227, 174, 0.1));
+  --glass: rgba(8, 10, 18, 0.72);
+  --panel: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 40px 100px rgba(0, 0, 0, 0.48);
+  --glow: 0 0 0 1px rgba(122, 108, 255, 0.35), 0 18px 50px rgba(91, 75, 255, 0.25);
+  --selection: rgba(122, 108, 255, 0.35);
+
+  --console-bg: #080a13;
+  --console-surface: #0d1120;
+  --console-border: rgba(255, 255, 255, 0.1);
+  --console-text: #f2f4fc;
+  --console-muted: #8b92a8;
+}
+
+[data-theme='light'] {
+  --bg: #f6f6fa;
+  --bg-soft: #eef0f7;
+  --surface: #ffffff;
+  --surface-2: #f4f5fa;
+  --surface-3: #e9ebf4;
+  --text: #0b0d18;
+  --text-soft: #303548;
+  --muted: #5c6378;
+  --faint: #858ca0;
+  --border: rgba(11, 13, 24, 0.1);
+  --border-strong: rgba(11, 13, 24, 0.18);
+  --brand: #5b4bff;
+  --brand-2: #4b3ee6;
+  --brand-3: #2f74ff;
+  --mint: #008e6d;
+  --amber: #9a6400;
+  --pink: #bb3f75;
+  --sky: #0079b8;
+  --danger: #c62d3d;
+  --gradient: linear-gradient(115deg, #5b4bff 0%, #3f6fff 52%, #00a77c 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(91, 75, 255, 0.1), rgba(0, 167, 124, 0.08));
+  --glass: rgba(255, 255, 255, 0.78);
+  --panel: linear-gradient(180deg, #ffffff, #fbfbfe);
+  --shadow-sm: 0 8px 22px rgba(21, 25, 50, 0.07);
+  --shadow-md: 0 24px 55px rgba(21, 25, 50, 0.1);
+  --shadow-lg: 0 40px 90px rgba(21, 25, 50, 0.14);
+  --glow: 0 0 0 1px rgba(91, 75, 255, 0.22), 0 18px 44px rgba(91, 75, 255, 0.16);
+  --selection: rgba(91, 75, 255, 0.22);
+}

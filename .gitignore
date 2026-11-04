@@ -2,6 +2,21 @@
 Thumbs.db
 desktop.ini
 *.log
+
 node_modules/
+dist/
+coverage/
+.vite/
+
 .vscode/
+.idea/
+
 .env
+.env.local
+.env.*.local
+!.env.example
+
+# Legacy static site (kept only in git history on the React branch)
+assets/
+
+*.tsbuildinfo

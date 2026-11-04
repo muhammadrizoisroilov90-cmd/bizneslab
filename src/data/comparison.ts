@@ -1,0 +1,58 @@
+import type { ComparisonRow } from '../types';
+
+export const comparisonRows: ComparisonRow[] = [
+  {
+    key: 'qr',
+    model: 'Obuna',
+    payer: 'Restoran egasi',
+    entry: '100–300 ming/oy',
+    mvp: '2–3 hafta',
+    difficulty: 'Oson',
+    potential: 'Yuqori',
+  },
+  {
+    key: 'bron',
+    model: 'Obuna',
+    payer: 'Salon / klinika',
+    entry: '100–200 ming/oy',
+    mvp: '3–4 hafta',
+    difficulty: "Oson-o'rta",
+    potential: 'Yuqori',
+  },
+  {
+    key: 'shop',
+    model: 'Obuna + %',
+    payer: 'Sotuvchi',
+    entry: '50–100 ming/oy',
+    mvp: '4–5 hafta',
+    difficulty: "O'rta",
+    potential: "O'rta",
+  },
+  {
+    key: 'ijara',
+    model: 'Komissiya',
+    payer: 'Har bir brondan',
+    entry: '10–15%',
+    mvp: '6–8 hafta',
+    difficulty: "O'rta-yuqori",
+    potential: 'Yuqori',
+  },
+  {
+    key: 'usta',
+    model: 'Komissiya',
+    payer: 'Usta / mijoz',
+    entry: '8–12%',
+    mvp: '5–6 hafta',
+    difficulty: "O'rta-yuqori",
+    potential: "O'rta",
+  },
+  {
+    key: 'crm',
+    model: 'Obuna',
+    payer: 'Biznes egasi',
+    entry: '100–250 ming/oy',
+    mvp: '4–6 hafta',
+    difficulty: "O'rta",
+    potential: "O'rta",
+  },
+];

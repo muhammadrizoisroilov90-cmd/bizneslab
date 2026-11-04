@@ -1,0 +1,19 @@
+{
+  "name": "BiznesLab — Tadbirkorlik uchun daromadli web mahsulotlar",
+  "short_name": "BiznesLab",
+  "description": "6 ta tekshirilgan web mahsulot g'oyasi: kim to'laydi, qancha daromad keltiradi va MVP qancha vaqtda tayyor bo'ladi.",
+  "lang": "uz",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06070d",
+  "theme_color": "#06070d",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
