@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="BiznesLab — tadbirkorlik uchun daromadli web mahsulotlar">
+  <defs>
+    <linearGradient id="brand" x1="80" y1="60" x2="360" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9182ff" />
+      <stop offset=".52" stop-color="#6f8cff" />
+      <stop offset="1" stop-color="#48e2b4" />
+    </linearGradient>
+    <linearGradient id="headline" x1="72" y1="300" x2="520" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b7acff" />
+      <stop offset=".5" stop-color="#8f9cff" />
+      <stop offset="1" stop-color="#6fe9c1" />
+    </linearGradient>
+    <radialGradient id="glowA" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#7a6cff" stop-opacity=".55" />
+      <stop offset="1" stop-color="#7a6cff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#46e3ae" stop-opacity=".32" />
+      <stop offset="1" stop-color="#46e3ae" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity=".055" stroke-width="1" />
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="26" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#06070d" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <ellipse cx="140" cy="40" rx="420" ry="330" fill="url(#glowA)" />
+  <ellipse cx="1150" cy="620" rx="380" ry="300" fill="url(#glowB)" />
+  <rect x=".5" y=".5" width="1199" height="629" rx="0" fill="none" stroke="#ffffff" stroke-opacity=".08" />
+
+  <!-- Logo -->
+  <rect x="72" y="58" width="52" height="52" rx="14" fill="url(#brand)" />
+  <svg x="81" y="67" width="34" height="34" viewBox="0 0 32 32" fill="none">
+    <path d="M8 24V8h8.2c3.8 0 6 1.9 6 5 0 2.1-1.1 3.6-2.9 4.3 2.4.6 3.9 2.3 3.9 4.9 0 3.5-2.5 5.8-6.7 5.8H8Z" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round" />
+    <path d="M13 12.2h3.2c1.5 0 2.4.8 2.4 2.1 0 1.4-1 2.2-2.6 2.2H13v-4.3ZM13 19.6h3.8c1.6 0 2.6.8 2.6 2.2 0 1.5-1.1 2.3-2.8 2.3H13v-4.5Z" fill="#ffffff" />
+  </svg>
+  <text x="140" y="92" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="-0.4" fill="#f3f4fb">Biznes<tspan fill="#a495ff">Lab</tspan></text>
+
+  <!-- Badge -->
+  <rect x="912" y="60" width="216" height="42" rx="21" fill="#0d101b" stroke="#ffffff" stroke-opacity=".12" />
+  <circle cx="936" cy="81" r="4" fill="#46e3ae" />
+  <text x="950" y="87" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2.2" fill="#c7cbd9">2026 · O'ZBEKISTON</text>
+
+  <!-- Headline -->
+  <text x="72" y="228" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-2.2" fill="#f6f7fd">Tadbirkorlik uchun</text>
+  <text x="72" y="306" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-2.2" fill="url(#headline)">daromadli web</text>
+  <text x="72" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="-2.2" fill="#f6f7fd">mahsulotlar</text>
+
+  <text x="72" y="444" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#969cb0">6 ta tekshirilgan g'oya · kim to'laydi · qancha daromad · MVP muddati</text>
+
+  <!-- Stats -->
+  <line x1="72" y1="492" x2="1128" y2="492" stroke="#ffffff" stroke-opacity=".1" />
+
+  <text x="72" y="546" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-1" fill="#f3f4fb">6 ta</text>
+  <text x="72" y="574" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#686e82">tekshirilgan g'oya</text>
+
+  <text x="332" y="546" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-1" fill="#f3f4fb">2–3 hafta</text>
+  <text x="332" y="574" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#686e82">eng tez MVP</text>
+
+  <text x="622" y="546" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-1" fill="#f3f4fb">100–300 ming</text>
+  <text x="622" y="574" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#686e82">oylik obuna (so'm)</text>
+
+  <rect x="926" y="516" width="202" height="48" rx="12" fill="none" stroke="url(#brand)" stroke-width="1.4" />
+  <text x="1027" y="546" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#bfb5ff">Bepul MVP rejasi</text>
+
+  <!-- Accent dot -->
+  <circle cx="1108" cy="570" r="16" fill="#46e3ae" fill-opacity=".16" filter="url(#soft)" />
+</svg>
